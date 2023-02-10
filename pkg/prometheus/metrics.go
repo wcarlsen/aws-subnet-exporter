@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	prefix = "aws_subnet_exporter"
+	prefix = "aws_subnet_exporter_"
 )
 
 var (

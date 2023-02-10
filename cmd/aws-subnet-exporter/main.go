@@ -17,9 +17,9 @@ const (
 )
 
 var (
-	port   = flag.String("port", ":8080", "The port to listen on for HTTP requests.")
+	port   = flag.String("port", "8080", "The port to listen on for HTTP requests.")
 	region = flag.String("region", "eu-west-1", "AWS region")
-	filter = flag.String("filter", "*eks*", "Filter subnets by tag regex when calling AWS (assumes tag key is Name")
+	filter = flag.String("filter", "*", "Filter subnets by tag regex when calling AWS (assumes tag key is Name")
 	period = flag.Duration("period", 60*time.Second, "Period for calling AWS in seconds")
 	debug  = flag.Bool("debug", false, "Enable debug logging")
 )
@@ -63,5 +63,5 @@ func main() {
 
 	log.WithFields(log.Fields{"endpoint": endpoint, "port": port}).Info("Starting metrics web server")
 	http.Handle(endpoint, prom.Handler)
-	log.Fatal(http.ListenAndServe(*port, nil))
+	log.Fatal(http.ListenAndServe(":"+*port, nil))
 }
