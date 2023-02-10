@@ -23,3 +23,9 @@ var (
 		Help: "Max host IPs in subnet",
 	}, labels)
 )
+
+// Prometheus register metrics
+func RegisterMetrics() {
+	prometheus.MustRegister(AvailableIPs)
+	prometheus.MustRegister(MaxIPs)
+}

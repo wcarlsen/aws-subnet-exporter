@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -28,6 +29,7 @@ type Subnet struct {
 
 // Get subnets
 func GetSubnets(client *ec2.Client, filter string) ([]Subnet, error) {
+	log.Debug("Describing subnets")
 	nameIdentifier := "tag:Name"
 	resp, err := client.DescribeSubnets(context.TODO(), &ec2.DescribeSubnetsInput{
 		Filters: []types.Filter{{
@@ -36,6 +38,7 @@ func GetSubnets(client *ec2.Client, filter string) ([]Subnet, error) {
 		}},
 	})
 	if err != nil {
+		log.Debug("Failed to describe subnets")
 		return nil, errors.Wrap(err, errCannotDescribeSubnets)
 	}
 
