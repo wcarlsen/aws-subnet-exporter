@@ -25,6 +25,7 @@ var (
 )
 
 func init() {
+	flag.Parse()
 	utils.SetupLogger(debug)
 	prom.RegisterMetrics()
 }
