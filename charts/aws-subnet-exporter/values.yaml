@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/wcarlsen/aws-subnet-exporter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.3"
+  tag: "v0.0.4"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,6 +39,10 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8080
+
+serviceMonitor:
+  enabled: false
+  additionalLabels: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

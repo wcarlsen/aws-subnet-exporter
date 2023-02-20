@@ -13,7 +13,8 @@ import (
 
 const (
 	errGoRoutineStopped = "go routine for getting subnets stopped"
-	endpoint            = "/metrics"
+	metricsEndpoint     = "/metrics"
+	healthEndpoint      = "/healthz"
 )
 
 var (
@@ -31,7 +32,7 @@ func init() {
 }
 
 func main() {
-	log.WithFields(log.Fields{"port": *port, "region": *region, "filter": *filter, "period": *period, "endpoint": endpoint}).Info("Starting aws-subnet-exporter")
+	log.WithFields(log.Fields{"port": *port, "region": *region, "filter": *filter, "period": *period, "endpoint": metricsEndpoint}).Info("Starting aws-subnet-exporter")
 	client, err := aws.InitEC2Client(*region)
 	if err != nil {
 		log.Fatal(err)
@@ -62,7 +63,8 @@ func main() {
 		}
 	}()
 
-	log.WithFields(log.Fields{"endpoint": endpoint, "port": port}).Info("Starting metrics web server")
-	http.Handle(endpoint, prom.Handler)
+	log.WithFields(log.Fields{"endpoint": metricsEndpoint, "port": port}).Info("Starting metrics web server")
+	http.Handle(metricsEndpoint, prom.Handler)
+	http.Handle(healthEndpoint, http.HandlerFunc(utils.HealthHandler))
 	log.Fatal(http.ListenAndServe(":"+*port, nil))
 }
