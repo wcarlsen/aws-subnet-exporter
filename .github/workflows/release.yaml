@@ -57,8 +57,5 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
-        with:
-          charts_dir: charts/aws-subnet-exporter
-          charts_repo_url: https://wcarlsen.github.io/aws-subnet-exporter
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
