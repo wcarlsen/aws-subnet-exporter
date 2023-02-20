@@ -5,6 +5,7 @@ Fetch AWS subnet available IP count and expose it as Prometheus metrics. Why? Be
 ```
 # Curl metrics example
 curl http://localhost:8080/metrics
+
 # HELP aws_subnet_exporter_available_ips Available IPs in subnets
 # TYPE aws_subnet_exporter_available_ips gauge
 aws_subnet_exporter_available_ips{az="eu-west-1a",cidrblock="10.103.0.0/28",name="eks_clu_eu-west-1a",subnetid="subnet-XXX",vpcid="vpc-YYY"} 10
