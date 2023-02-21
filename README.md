@@ -44,6 +44,7 @@ docker run -p 8080:8080 -e AWS_ACCESS_KEY_ID=xyz -e AWS_SECRET_ACCESS_KEY=aaa gh
 ```
 
 ## Helm install
+For installing the exporter using helm. Do the following.
 ```bash
 helm repo add aws-subnet-exporter https://wcarlsen.github.io/aws-subnet-exporter/
 helm repo update
