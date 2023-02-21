@@ -7,9 +7,10 @@ on:
 
 jobs:
   chart-release:
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
