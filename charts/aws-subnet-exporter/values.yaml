@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/wcarlsen/aws-subnet-exporter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.4"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,6 +39,12 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8080
+
+# Do not use args to set port, use service.port instead
+awsSubnetExporter:
+  region: ""
+  filter: ""
+  period: ""
 
 serviceMonitor:
   enabled: false

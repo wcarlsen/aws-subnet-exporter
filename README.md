@@ -42,3 +42,10 @@ You have to provide an AWS context and I will not cover how to do this here.
 ```bash
 docker run -p 8080:8080 -e AWS_ACCESS_KEY_ID=xyz -e AWS_SECRET_ACCESS_KEY=aaa ghcr.io/wcarlsen/aws-subnet-exporter:latest ./aws-subnet-exporter --port="8080" --region="eu-west-1" --filter="*" --period="60" --debug
 ```
+
+## Helm install
+```bash
+helm repo add aws-subnet-exporter https://wcarlsen.github.io/aws-subnet-exporter/
+helm repo update
+helm install --generate-name aws-subnet-exporter/aws-subnet-exporter
+```

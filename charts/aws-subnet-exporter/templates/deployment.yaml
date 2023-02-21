@@ -31,6 +31,17 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            {{- if .Values.awsSubnetExporter.region }}
+            - --region="{{ .Values.awsSubnetExporter.region }}"
+            {{- end }}
+            {{- if .Values.awsSubnetExporter.filter }}
+            - --filter="{{ .Values.awsSubnetExporter.filter }}"
+            {{- end }}
+            {{- if .Values.awsSubnetExporter.period }}
+            - --period="{{ .Values.awsSubnetExporter.period }}"
+            {{- end }}
+            - --port={{ .Values.service.port }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
