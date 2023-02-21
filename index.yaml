@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   aws-subnet-exporter:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2023-02-21T07:19:10.497609847Z"
+    description: A Helm chart for Kubernetes
+    digest: 4f944d57003a46f7815c6329865e75901783135b445245389160be75b4239e35
+    maintainers:
+    - email: carlsenwilli@gmail.com
+      name: wcarlsen
+    name: aws-subnet-exporter
+    type: application
+    urls:
+    - https://github.com/wcarlsen/aws-subnet-exporter/releases/download/aws-subnet-exporter-0.1.2/aws-subnet-exporter-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.1
     created: "2023-02-20T14:09:16.958725223Z"
     description: A Helm chart for Kubernetes
@@ -14,4 +27,4 @@ entries:
     urls:
     - https://github.com/wcarlsen/aws-subnet-exporter/releases/download/aws-subnet-exporter-0.1.1/aws-subnet-exporter-0.1.1.tgz
     version: 0.1.1
-generated: "2023-02-20T14:09:16.958730923Z"
+generated: "2023-02-21T07:19:10.497620147Z"
