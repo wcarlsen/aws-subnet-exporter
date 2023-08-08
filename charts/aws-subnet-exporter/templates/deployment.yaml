@@ -31,6 +31,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: "./aws-subnet-exporter"
           args:
             {{- if .Values.awsSubnetExporter.region }}
             - --region="{{ .Values.awsSubnetExporter.region }}"
