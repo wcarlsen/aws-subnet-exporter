@@ -34,10 +34,10 @@ spec:
           command: ["./aws-subnet-exporter"]
           args:
             {{- if .Values.awsSubnetExporter.region }}
-            - --region="{{ .Values.awsSubnetExporter.region }}"
+            - --region={{ .Values.awsSubnetExporter.region }}
             {{- end }}
             {{- if .Values.awsSubnetExporter.filter }}
-            - --filter="{{ .Values.awsSubnetExporter.filter }}"
+            - --filter={{ .Values.awsSubnetExporter.filter }}
             {{- end }}
             {{- if .Values.awsSubnetExporter.period }}
             - --period="{{ .Values.awsSubnetExporter.period }}"
